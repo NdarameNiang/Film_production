@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_film_form" model="ir.ui.view">
+        <field name="name">film.form</field>
+        <field name="model">film.production</field>
+        <field name="arch" type="xml">
+            <form string="Film">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="release_date"/>
+                        <field name="duration"/>
+                        <field name="director_id"/>
+                        <field name="location_id"/>
+                        <field name="production_company_id"/>
+                        <field name="film_type"/>
+                        <field name="size"/>
+                        <field name="price"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_film_tree" model="ir.ui.view">
+        <field name="name">film.tree</field>
+        <field name="model">film.production</field>
+        <field name="arch" type="xml">
+            <tree string="Films">
+                <field name="name"/>
+                <field name="release_date"/>
+                <field name="duration"/>
+                <field name="director_id"/>
+                <field name="production_company_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="film_action" model="ir.actions.act_window">
+        <field name="name">Films</field>
+        <field name="res_model">film.production</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="film_menu" name="Production de Films" sequence="10"/>
+    <menuitem id="film_submenu" name="Films" parent="film_menu" action="film_action" sequence="10"/>
+</odoo>
