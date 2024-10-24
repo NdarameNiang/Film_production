@@ -6,7 +6,8 @@
     'description': 'Module for managing films, locations, production companies, shootings, and directors.',
     'depends': ['base'],
     'data': [
-        'views/film_views.xml',
+        'views/realisateur_views.xml',
+        'views/lieu_views.xml',
     ],
     'installable': True,
     'application': True,

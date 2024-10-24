@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Vue formulaire pour Réalisateur -->
+    <record id="view_realisateur_form" model="ir.ui.view">
+        <field name="name">tournage.realisateur.form</field>
+        <field name="model">tournage.realisateur</field>
+        <field name="arch" type="xml">
+            <form string="Réalisateur">
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="nom" placeholder="Nom du réalisateur"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="sexe"/>
+                            <field name="situation_matrimoniale"/>
+                            <field name="date_naissance"/>
+                        </group>
+                        <group>
+                            <field name="age"/>
+                            <field name="nombre_films"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Films Réalisés">
+                            <field name="film_ids">
+                                <tree>
+                                    <field name="nom"/>
+                                    <field name="date_sortie"/>
+                                    <field name="duree"/>
+                                    <field name="type_film"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Vue liste pour Réalisateur -->
+    <record id="view_realisateur_tree" model="ir.ui.view">
+        <field name="name">tournage.realisateur.tree</field>
+        <field name="model">tournage.realisateur</field>
+        <field name="arch" type="xml">
+            <tree string="Réalisateurs">
+                <field name="nom"/>
+                <field name="age"/>
+                <field name="sexe"/>
+                <field name="nombre_films"/>
+                <field name="date_naissance"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Vue recherche pour Réalisateur -->
+    <record id="view_realisateur_search" model="ir.ui.view">
+        <field name="name">tournage.realisateur.search</field>
+        <field name="model">tournage.realisateur</field>
+        <field name="arch" type="xml">
+            <search string="Rechercher un réalisateur">
+                <field name="nom"/>
+                <field name="sexe"/>
+                <separator/>
+                <filter string="Homme" name="homme" domain="[('sexe', '=', 'homme')]"/>
+                <filter string="Femme" name="femme" domain="[('sexe', '=', 'femme')]"/>
+                <group expand="0" string="Regrouper par">
+                    <filter string="Sexe" name="group_by_sexe" context="{'group_by': 'sexe'}"/>
+                    <filter string="Situation Matrimoniale" name="group_by_situation" context="{'group_by': 'situation_matrimoniale'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- Action de fenêtre pour Réalisateur -->
+    <record id="action_realisateur" model="ir.actions.act_window">
+        <field name="name">Réalisateurs</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">tournage.realisateur</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Créer votre premier réalisateur
+            </p>
+        </field>
+    </record>
+
+    <!-- Menu pour Réalisateur -->
+   
+</odoo>
