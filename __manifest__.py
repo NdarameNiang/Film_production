@@ -1,12 +1,13 @@
 {
-    'name': 'Film Production',
+    'name': 'Module Tournage de Film',
     'version': '1.0',
-    'category': 'Entertainment',
-    'summary': 'Module for managing film productions',
-    'description': 'Module for managing films, locations, production companies, shootings, and directors.',
+    'category': 'Cinema',
+    'description': 'Gestion des tournages de film',
+    'author': '[Issa Ndiaye, Mame Diarra BA, Seynabou Gaye, Ndeye Arame Niang]',
     'depends': ['base'],
     'data': [
-        'views/film_views.xml',
+        'security/ir.model.access.csv',
+        'views/tournage_views.xml',
     ],
     'installable': True,
     'application': True,
