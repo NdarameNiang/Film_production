@@ -4,6 +4,7 @@
     'category': 'Entertainment',
     'summary': 'Module for managing film productions',
     'description': 'Module for managing films, locations, production companies, shootings, and directors.',
+    'author': '[Issa Ndiaye, Mame Diarra BA, Seynabou Gaye, Ndeye Arame Niang]',
     'depends': ['base'],
     'data': [
         'views/realisateur_views.xml',
