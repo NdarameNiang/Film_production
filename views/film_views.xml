@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Vue tree/list -->
+    <record id="view_film_tree" model="ir.ui.view">
+        <field name="name">cinema.film.tree</field>
+        <field name="model">cinema.film</field>
+        <field name="arch" type="xml">
+            <tree string="Films">
+                <field name="nom"/>
+                <field name="realisateur_id"/>
+                <field name="maison_production_id"/>
+                <field name="date_sortie"/>
+                <field name="type_film"/>
+                <field name="duree" widget="float_time"/>
+                <field name="prix_vendu" widget="monetary"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Vue form -->
+    <record id="view_film_form" model="ir.ui.view">
+        <field name="name">cinema.film.form</field>
+        <field name="model">cinema.film</field>
+        <field name="arch" type="xml">
+            <form string="Film">
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="nom" placeholder="Nom du film"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="realisateur_id"/>
+                            <field name="maison_production_id"/>
+                            <field name="date_sortie"/>
+                            <field name="type_film"/>
+                        </group>
+                        <group>
+                            <field name="duree" widget="float_time"/>
+                            <field name="duree_minutes"/>
+                            <field name="taille"/>
+                            <field name="prix_vendu" widget="monetary"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Lieux de tournage">
+                            <field name="lieu_ids"/>
+                        </page>
+                        <page string="Tournages">
+                            <field name="tournage_ids">
+                                <tree>
+                                    <field name="film_id"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Vue search -->
+    <record id="view_film_search" model="ir.ui.view">
+        <field name="name">cinema.film.search</field>
+        <field name="model">cinema.film</field>
+        <field name="arch" type="xml">
+            <search string="Rechercher un film">
+                <field name="nom"/>
+                <field name="realisateur_id"/>
+                <field name="maison_production_id"/>
+                <field name="type_film"/>
+                <separator/>
+                <group expand="0" string="Regrouper par">
+                    <filter string="Réalisateur" name="realisateur" context="{'group_by': 'realisateur_id'}"/>
+                    <filter string="Maison de production" name="maison_production" context="{'group_by': 'maison_production_id'}"/>
+                    <filter string="Type de film" name="type_film" context="{'group_by': 'type_film'}"/>
+                    <filter string="Date de sortie" name="date_sortie" context="{'group_by': 'date_sortie'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- Action window -->
+    <record id="action_film" model="ir.actions.act_window">
+        <field name="name">Films</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">cinema.film</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="view_film_search"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Créer votre premier film
+            </p>
+            <p>
+                Créez un nouveau film pour commencer à gérer vos films.
+            </p>
+        </field>
+    </record>
+</odoo>

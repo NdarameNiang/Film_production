@@ -62,7 +62,12 @@ class Film(models.Model):
 
     tournage_ids = fields.One2many('cinema.tournage', 'film_id', string="Tournages")
   
-
+    maison_production_id = fields.Many2one(
+        'cinema.maison.production',
+        string='Maison de production',
+        required=True,
+        ondelete='restrict'
+    )
   
     # Champs calculés
     duree_minutes = fields.Integer(

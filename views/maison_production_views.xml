@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Vue formulaire -->
+    <record id="view_maison_production_form" model="ir.ui.view">
+        <field name="name">cinema.maison.production.form</field>
+        <field name="model">cinema.maison.production</field>
+        <field name="arch" type="xml">
+            <form string="Maison de Production">
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_view_films" 
+                                type="object"
+                                class="oe_stat_button"
+                                icon="fa-film">
+                            <field name="nombre_films" string="Films" widget="statinfo"/>
+                        </button>
+                    </div>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="nom" placeholder="Nom de la maison de production"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="capital" widget="monetary"/>
+                            <field name="total_revenus" widget="monetary"/>
+                        </group>
+                        <group>
+                            <field name="nombre_films"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Films produits">
+                            <field name="film_ids" context="{'default_maison_production_id': active_id}">
+                                <tree>
+                                    <field name="nom"/>
+                                    <field name="date_sortie"/>
+                                    <field name="type_film"/>
+                                    <field name="realisateur_id"/>
+                                    <field name="prix_vendu" sum="Total"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Vue liste -->
+    <record id="view_maison_production_tree" model="ir.ui.view">
+        <field name="name">cinema.maison.production.tree</field>
+        <field name="model">cinema.maison.production</field>
+        <field name="arch" type="xml">
+            <tree string="Maisons de Production">
+                <field name="nom"/>
+                <field name="capital"/>
+                <field name="nombre_films"/>
+                <field name="total_revenus"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Vue recherche -->
+    <record id="view_maison_production_search" model="ir.ui.view">
+        <field name="name">cinema.maison.production.search</field>
+        <field name="model">cinema.maison.production</field>
+        <field name="arch" type="xml">
+            <search string="Rechercher une maison de production">
+                <field name="nom"/>
+                <filter string="Capital > 1M€" 
+                        name="grand_capital" 
+                        domain="[('capital', '>', 1000000)]"/>
+                <filter string="Avec des films" 
+                        name="avec_films" 
+                        domain="[('nombre_films', '>', 0)]"/>
+                <group expand="0" string="Regrouper par">
+                    <filter string="Nombre de films" 
+                            name="group_by_nombre_films" 
+                            context="{'group_by': 'nombre_films'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+      <!-- Action de fenêtre -->
+    <record id="action_maison_production" model="ir.actions.act_window">
+        <field name="name">Maisons de Production</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">cinema.maison.production</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Créer votre première maison de production
+            </p>
+        </field>
+    </record>
+
+    <!-- Menu -->
+    <menuitem 
+        id="menu_tournage_maison_production" 
+        name="Maisons de Production" 
+        parent="menu_tournage" 
+        action="action_maison_production" 
+        sequence="30"/>
+</odoo>
