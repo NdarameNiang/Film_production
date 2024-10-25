@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+<record id="view_maison_production_form" model="ir.ui.view">
+    <field name="name">maison.production.form</field>
+    <field name="model">maison.production</field>
+    <field name="arch" type="xml">
+        <form string="Maison de Production">
+            <sheet>
+                <group>
+                    <field name="name"/>
+                    <field name="film_ids" widget="many2many_tags"/>
+                    <field name="film_count" readonly="1"/>
+                    <field name="capital"/>
+                </group>
+            </sheet>
+        </form>
+    </field>
+</record>
+
+<record id="view_maison_production_tree" model="ir.ui.view">
+    <field name="name">maison.production.tree</field>
+    <field name="model">maison.production</field>
+    <field name="arch" type="xml">
+        <tree string="Maisons de Production">
+            <field name="name"/>
+            <field name="film_count"/>
+            <field name="capital"/>
+        </tree>
+    </field>
+</record>
+</odoo>

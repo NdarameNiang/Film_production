@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_tournage_root" name="Tournage de Films" sequence="1"/>
+    <menuitem id="menu_film" name="Films" parent="menu_tournage_root" action="action_film"/>
+    <menuitem id="menu_maison_production" name="Maisons de Production" parent="menu_tournage_root" action="action_maison_production"/>
+</odoo>
