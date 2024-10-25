@@ -1,7 +1,7 @@
 from odoo import models, fields, api
 
 class Film(models.Model):
-    _name = 'tournage.film'
+    _name = 'cinema.film'
     _description = 'Film'
     _rec_name = 'nom'
     _sql_constraints = [
@@ -48,18 +48,19 @@ class Film(models.Model):
 
     # Relations avec d'autres modèles
     realisateur_id = fields.Many2one(
-        'tournage.realisateur',
+        'cinema.realisateur',
         string='Réalisateur',
         required=True,
         ondelete='restrict'
     )
 
     lieu_ids = fields.Many2many(
-        'tournage.lieu',
+        'cinema.lieu',
         string='Lieux de tournage',
         required=True
     )
 
+    tournage_ids = fields.One2many('cinema.tournage', 'film_id', string="Tournages")
   
 
   
@@ -97,36 +98,4 @@ class Film(models.Model):
             if record.taille and record.taille < 0:
                 raise models.ValidationError('La taille du film ne peut pas être négative!')
 
-    # # Méthodes ORM surchargées
-    # @api.model
-    # def create(self, vals):
-    #     # Code à exécuter avant la création
-    #     return super(Film, self).create(vals)
-
-    # def write(self, vals):
-    #     # Code à exécuter avant la modification
-    #     return super(Film, self).write(vals)
-
-    # def unlink(self):
-    #     # Vérifications avant la suppression
-    #     for record in self:
-    #         if record.statut == 'en_tournage':
-    #             raise models.ValidationError('Impossible de supprimer un film en cours de tournage!')
-    #     return super(Film, self).unlink()
-
-    # # Méthodes d'action
-    # def action_start_tournage(self):
-    #     for record in self:
-    #         record.statut = 'en_tournage'
-
-    # def action_finish_tournage(self):
-    #     for record in self:
-    #         record.statut = 'post_production'
-
-    # def action_cancel_film(self):
-    #     for record in self:
-    #         record.statut = 'annule'
-
-    # def action_complete_film(self):
-    #     for record in self:
-    #         record.statut = 'termine'
+   

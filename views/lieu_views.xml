@@ -2,8 +2,8 @@
 <odoo>
     <!-- Vue formulaire pour Lieu -->
     <record id="view_lieu_form" model="ir.ui.view">
-        <field name="name">tournage.lieu.form</field>
-        <field name="model">tournage.lieu</field>
+        <field name="name">cinema.lieu.form</field>
+        <field name="model">cinema.lieu</field>
         <field name="arch" type="xml">
             <form string="Lieu de tournage">
                 <sheet>
@@ -34,8 +34,8 @@
 
     <!-- Vue liste pour Lieu -->
     <record id="view_lieu_tree" model="ir.ui.view">
-        <field name="name">tournage.lieu.tree</field>
-        <field name="model">tournage.lieu</field>
+        <field name="name">cinema.lieu.tree</field>
+        <field name="model">cinema.lieu</field>
         <field name="arch" type="xml">
             <tree string="Lieux de tournage">
                 <field name="nom"/>
@@ -46,8 +46,8 @@
 
     <!-- Vue recherche pour Lieu -->
     <record id="view_lieu_search" model="ir.ui.view">
-        <field name="name">tournage.lieu.search</field>
-        <field name="model">tournage.lieu</field>
+        <field name="name">cinema.lieu.search</field>
+        <field name="model">cinema.lieu</field>
         <field name="arch" type="xml">
             <search string="Rechercher un lieu">
                 <field name="nom"/>
@@ -63,7 +63,7 @@
     <record id="action_lieu" model="ir.actions.act_window">
         <field name="name">Lieux de tournage</field>
         <field name="type">ir.actions.act_window</field>
-        <field name="res_model">tournage.lieu</field>
+        <field name="res_model">cinema.lieu</field>
         <field name="view_mode">tree,form</field>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">

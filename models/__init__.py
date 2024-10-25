@@ -4,4 +4,6 @@
 from . import realisateur
 from . import lieu
 from . import film
+from . import tournage
+
 

@@ -2,7 +2,7 @@ from odoo import models, fields, api
 from datetime import date
 
 class Lieu(models.Model):
-    _name = 'tournage.lieu'
+    _name = 'cinema.lieu'
     _description = 'Lieu de tournage'
     _rec_name = 'nom'
 
@@ -10,8 +10,8 @@ class Lieu(models.Model):
     
     # Relation Many2many avec les films
     film_ids = fields.Many2many(
-        'tournage.film',
-        'tournage_lieu_film_rel',
+        'cinema.film',
+        'cinema_lieu_film_rel',
         'lieu_id',
         'film_id',
         string='Films tournés'

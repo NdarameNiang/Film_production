@@ -2,7 +2,7 @@ from odoo import models, fields, api
 from datetime import date
 
 class Realisateur(models.Model):
-    _name = 'tournage.realisateur'
+    _name = 'cinema.realisateur'
     _description = 'Réalisateur de film'
     _rec_name = 'nom'
 
@@ -21,7 +21,7 @@ class Realisateur(models.Model):
     age = fields.Integer(string='Âge', compute='_compute_age', store=True)
     
     # Relation One2many avec les films
-    film_ids = fields.One2many('tournage.film', 'realisateur_id', string='Films Réalisés')
+    film_ids = fields.One2many('cinema.film', 'realisateur_id', string='Films Réalisés')
     nombre_films = fields.Integer(string='Nombre de Films', compute='_compute_nombre_films', store=True)
 
     @api.depends('date_naissance')

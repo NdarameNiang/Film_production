@@ -8,6 +8,7 @@
     'data': [
         'views/realisateur_views.xml',
         'views/lieu_views.xml',
+        'views/tournage_views.xml',
     ],
     'installable': True,
     'application': True,
